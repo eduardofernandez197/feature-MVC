@@ -1,27 +1,39 @@
 package com.fag.lucasmartins.arquitetura_software.model.repository.entity;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "tb_produtos")
 public class ProdutoEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private String nome ;
-    private Integer estoque ;
+    
+    private Long id; 
+    private String nome;
+    private Integer estoque;
     private double preco;
-    private int id;
 
+    
     public ProdutoEntity() {
     }
 
-    public ProdutoEntity(Integer estoque, int id, String nome, double preco) {
-        this.estoque = estoque;
+    public ProdutoEntity(Integer estoque, Long id, String nome, double preco) {
         this.id = id;
+        this.estoque = estoque;
         this.nome = nome;
         this.preco = preco;
+    }
+
+
+   
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -48,12 +60,5 @@ public class ProdutoEntity {
         this.preco = preco;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+   
 }

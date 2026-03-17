@@ -4,9 +4,9 @@ public class ProdutoBO {
     private String nome ;
     private Integer estoque ;
     private double preco;
-    private int id;
+    private long  id;
 
-    public ProdutoBO(int id,String nome, Integer estoque, double preco) {
+    public ProdutoBO(Long id,String nome, Integer estoque, double preco) {
         this.nome = nome;
         this.estoque = estoque;
         this.preco = preco;
@@ -60,7 +60,7 @@ public class ProdutoBO {
         this.preco = preco;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

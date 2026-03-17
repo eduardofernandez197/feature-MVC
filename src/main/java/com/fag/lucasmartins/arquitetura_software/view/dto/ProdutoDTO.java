@@ -5,9 +5,12 @@ public class ProdutoDTO {
     private String nome ;
     private Integer estoque ;
     private double preco;
-    private int id;
+    private Long id;
 
-    public ProdutoDTO(int id, String nome, Integer estoque, double preco) {
+    public ProdutoDTO() {
+    }
+
+    public ProdutoDTO(Long id, String nome, Integer estoque, double preco) {
         this.nome = nome;
         this.estoque = estoque;
         this.preco = preco;
@@ -31,10 +34,10 @@ public class ProdutoDTO {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

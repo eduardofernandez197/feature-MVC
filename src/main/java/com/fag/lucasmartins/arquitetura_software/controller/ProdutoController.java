@@ -1,8 +1,6 @@
 package com.fag.lucasmartins.arquitetura_software.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +15,6 @@ import com.fag.lucasmartins.arquitetura_software.view.dto.ProdutoDTO;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     private final ProdutoService produtoService;
 
@@ -38,8 +34,4 @@ public class ProdutoController {
                 .status(201)
                 .body(produtoCadastradoDTO);
     }
-
-
-
-
-        }
+ }

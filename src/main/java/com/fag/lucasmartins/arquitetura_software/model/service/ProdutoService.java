@@ -1,10 +1,12 @@
 package com.fag.lucasmartins.arquitetura_software.model.service;
 
+import org.springframework.stereotype.Service;
+
 import com.fag.lucasmartins.arquitetura_software.model.bo.ProdutoBO;
 
-
+@Service
 public interface ProdutoService {
 
-    ProdutoBO cadastrarProduto(ProdutoBO produtoBO);
+    public abstract ProdutoBO cadastrarProduto(ProdutoBO produtoBO);
 
 }

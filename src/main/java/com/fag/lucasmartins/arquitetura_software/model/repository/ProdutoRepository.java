@@ -1,5 +1,10 @@
 package com.fag.lucasmartins.arquitetura_software.model.repository;
 
-public class ProdutoRepository {
+import com.fag.lucasmartins.arquitetura_software.model.bo.ProdutoBO;
+
+public interface  ProdutoRepository {
+    public ProdutoBO salvar(ProdutoBO produtobo);
+        
+
     
 }
