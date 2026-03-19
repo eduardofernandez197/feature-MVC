@@ -1,29 +1,31 @@
 package com.fag.lucasmartins.arquitetura_software.model.repository.impl;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.fag.lucasmartins.arquitetura_software.model.bo.ProdutoBO;
 import com.fag.lucasmartins.arquitetura_software.model.repository.ProdutoRepository;
 import com.fag.lucasmartins.arquitetura_software.model.repository.ProdutoRepository;
 import com.fag.lucasmartins.arquitetura_software.model.repository.entity.ProdutoEntity;
-import com.fag.lucasmartins.arquitetura_software.model.repository.jpa.ProdutoRepositoryJpa;
-import com.fag.lucasmartins.arquitetura_software.model.repository.mapper.ProdutoEntityMapper;
+import com.fag.lucasmartins.arquitetura_software.model.repository.jpa.ProdutoJpaRepository;
+import com.fag.lucasmartins.arquitetura_software.model.repository.mapper.ProdutoMapper;
 
-@Component
-public class ProdutoRepositoryImpl implements ProdutoRepository{
+@Repository
+public class ProdutoRepositoryImpl implements ProdutoRepository {
 
-    private final ProdutoRepositoryJpa jpaRepository;
+    private final ProdutoJpaRepository produtoJpaRepository;
 
-    public ProdutoRepositoryImpl(ProdutoRepositoryJpa jpaRepository) {
-        this.jpaRepository = jpaRepository;
+    public ProdutoRepositoryImpl(ProdutoJpaRepository produtoJpaRepository) {
+        this.produtoJpaRepository = produtoJpaRepository;
     }
-    
+
     @Override
-    public ProdutoBO salvar(ProdutoBO bo) {
-        ProdutoEntity entity = ProdutoEntityMapper.toEntity(bo);
+    public ProdutoBO salvar(ProdutoBO produtoBO) {
+        ProdutoEntity produtoEntity = ProdutoMapper.toEntity(produtoBO);
 
-        ProdutoEntity produtoCadastrado = jpaRepository.save(entity);
+        produtoJpaRepository.save(produtoEntity);
 
-        return ProdutoEntityMapper.toBO(produtoCadastrado);
+        return ProdutoMapper.toBO(produtoEntity);
     }
 }
+

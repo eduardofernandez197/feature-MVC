@@ -1,40 +1,28 @@
 package com.fag.lucasmartins.arquitetura_software.model.bo;
 
 public class ProdutoBO {
-    private String nome ;
-    private Integer estoque ;
+
+    private String nome;
+
+    private Integer estoque;
+
     private double preco;
-    private long  id;
 
-    public ProdutoBO(Long id,String nome, Integer estoque, double preco) {
-        this.nome = nome;
-        this.estoque = estoque;
-        this.preco = preco;
-        this.id = id;
-    }
+    private double precoFinal;
 
-    public ProdutoBO() {
-
-    }
-
-    public void verificacaoPremium (){
-     if (nome != null && nome.toLowerCase().contains("premium")) {
-                if (preco < 100.0) {
-                    throw new RuntimeException("Erro: Produtos Premium não podem custar menos de R$ 100,00.");
-                    
-                }
+    public void validarPrecoProdutoPremium() {
+        if (this.nome != null && this.nome.toLowerCase().contains("premium")) {
+            if (this.preco < 100.0) {
+                throw new RuntimeException("Erro: Produtos Premium não podem custar menos de R$ 100,00.");
             }
+        }
     }
 
-    public void calcularDesconto() {
-        double precoFinal = preco;
-            if (estoque != null && estoque >= 50) {
-                precoFinal = preco - (preco * 0.10); // 10%
-            }
+    public void calcularPrecoFinalPorEstoqueBaixo(){
+        if (estoque != null && estoque >= 50) {
+            this.precoFinal = preco - (preco * 0.10);
+        }
     }
-            
-        
-        
 
     public String getNome() {
         return nome;
@@ -60,13 +48,11 @@ public class ProdutoBO {
         this.preco = preco;
     }
 
-    public long getId() {
-        return id;
+    public double getPrecoFinal() {
+        return precoFinal;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPrecoFinal(double precoFinal) {
+        this.precoFinal = precoFinal;
     }
-    
-
 }

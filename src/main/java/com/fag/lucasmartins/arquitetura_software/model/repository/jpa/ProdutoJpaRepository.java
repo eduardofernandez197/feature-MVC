@@ -4,6 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.fag.lucasmartins.arquitetura_software.model.repository.entity.ProdutoEntity;
 
-public interface ProdutoRepositoryJpa extends JpaRepository<ProdutoEntity, Long> {
-    
+public interface ProdutoJpaRepository extends JpaRepository<ProdutoEntity, Integer> {
 }

@@ -3,37 +3,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_produto")
 public class ProdutoEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
-    private Long id; 
+    private Integer Id;
+
     private String nome;
+
     private Integer estoque;
+
     private double preco;
 
-    
-    public ProdutoEntity() {
+    private double precoFinal;
+
+    public Integer getId() {
+        return Id;
     }
 
-    public ProdutoEntity(Integer estoque, Long id, String nome, double preco) {
-        this.id = id;
-        this.estoque = estoque;
-        this.nome = nome;
-        this.preco = preco;
-    }
-
-
-   
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getNome() {
@@ -60,5 +53,11 @@ public class ProdutoEntity {
         this.preco = preco;
     }
 
-   
+    public double getPrecoFinal() {
+        return precoFinal;
+    }
+
+    public void setPrecoFinal(double precoFinal) {
+        this.precoFinal = precoFinal;
+    }
 }

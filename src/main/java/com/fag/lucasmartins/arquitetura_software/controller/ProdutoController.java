@@ -15,23 +15,22 @@ import com.fag.lucasmartins.arquitetura_software.view.dto.ProdutoDTO;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-
     private final ProdutoService produtoService;
+
+
 
     public ProdutoController(ProdutoService produtoService) {
         this.produtoService = produtoService;
     }
+
     @PostMapping
-    public ResponseEntity<ProdutoDTO> cadastrarProduto(@RequestBody ProdutoDTO dto) {
-        
-        ProdutoBO produtobo = ProdutoDTOMapper.toBo(dto);
+    public ResponseEntity<ProdutoDTO> cadastrarProduto(@RequestBody ProdutoDTO produtoDTO) {
+        ProdutoBO produtoBO = ProdutoDTOMapper.toBo(produtoDTO);
 
-        ProdutoBO produtoCadastradoBO = produtoService.cadastrarProduto(produtobo);
+        ProdutoBO produtoCriadoBo = produtoService.salvar(produtoBO);
 
-        ProdutoDTO produtoCadastradoDTO = ProdutoDTOMapper.toDto(produtoCadastradoBO);
+        ProdutoDTO produtoCriadoDTO = ProdutoDTOMapper.toDto(produtoCriadoBo);
 
-        return ResponseEntity
-                .status(201)
-                .body(produtoCadastradoDTO);
+        return ResponseEntity.status(201).body(produtoCriadoDTO);
     }
- }
+}

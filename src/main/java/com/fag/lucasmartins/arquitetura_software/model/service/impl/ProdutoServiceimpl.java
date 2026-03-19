@@ -7,24 +7,19 @@ import com.fag.lucasmartins.arquitetura_software.model.repository.ProdutoReposit
 import com.fag.lucasmartins.arquitetura_software.model.service.ProdutoService;
 
 @Service
-public class ProdutoServiceimpl implements ProdutoService {
+public class ProdutoServiceImpl implements ProdutoService {
 
     private final ProdutoRepository produtoRepository;
 
-    public ProdutoServiceimpl(ProdutoRepository produtoRepository) {
+    public ProdutoServiceImpl(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
     @Override
-    public ProdutoBO cadastrarProduto(ProdutoBO produtoBO) {
+    public ProdutoBO salvar(ProdutoBO produtoBO) {
+        produtoBO.validarPrecoProdutoPremium();
+        produtoBO.calcularPrecoFinalPorEstoqueBaixo();
 
-       
-        produtoBO.calcularDesconto();
-        produtoBO.verificacaoPremium();
-
-      
-        ProdutoBO produtoSalvo = produtoRepository.salvar(produtoBO);
-
-        return produtoSalvo;
+        return produtoRepository.salvar(produtoBO);
     }
 }
